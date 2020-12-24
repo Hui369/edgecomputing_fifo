@@ -3,8 +3,8 @@ package ntust.huiting.edgecomputing;
 //import ntust.huiting.edgecomputing.EmulatorParameters;
 
 /**
- * «Ê¥]Ãş§O
- * @author ¾G¿·ß¬
+ * å°åŒ…é¡åˆ¥
+ * @author hui
  *
  */
 public class Packet {
@@ -12,47 +12,47 @@ public class Packet {
 	//final private int queue_number = EmulatorParameters.queue_number;
 	//final private int constraint_deadline_time = EmulatorParameters.constraint_deadline_time;
 	
-	public double u2e_arrival_time = 0; // UE¶Ç°e¨ìEdgeªº¨ì¹F®É¶¡
-	public double u2e_service_time = 0; //  UE¶Ç°e¨ìEdgeªºªA°È®É¶¡(¶Ç¿é®É¶¡)
-	public double u2e_departure_time = 0; //  UE¶Ç°e¨ìEdgeªº§¹¦¨®É¶¡
-	public double u2e_waiting_time = 0; //  UE¶Ç°e¨ìEdgeªºµ¥­Ô®É¶¡
-	public int u2e_waiting_queue_length = 0; //  UE¶Ç°e¨ìEdgeªºµ¥­Ôªø«×
-	public int u2e_waiting_queue_length_scheduled = 0;//  ±Æµ{«áµ¥­Ôªø«×
+	public double u2e_arrival_time = 0; // UEå‚³é€åˆ°Edgeçš„åˆ°é”æ™‚é–“
+	public double u2e_service_time = 0; //  UEå‚³é€åˆ°Edgeçš„æœå‹™æ™‚é–“(å‚³è¼¸æ™‚é–“)
+	public double u2e_departure_time = 0; //  UEå‚³é€åˆ°Edgeçš„å®Œæˆæ™‚é–“
+	public double u2e_waiting_time = 0; //  UEå‚³é€åˆ°Edgeçš„ç­‰å€™æ™‚é–“
+	public int u2e_waiting_queue_length = 0; //  UEå‚³é€åˆ°Edgeçš„ç­‰å€™é•·åº¦
+	public int u2e_waiting_queue_length_scheduled = 0;//  æ’ç¨‹å¾Œç­‰å€™é•·åº¦
 	
-	public double e_arrival_time = 0; // ¦bEdgeªº¨ì¹F®É¶¡
-	public double e_service_time = 0; // ¦bEdgeªºªA°È®É¶¡
-	public double e_departure_time = 0; // ¦bEdgeªº§¹¦¨®É¶¡
-	public double e_waiting_time = 0; // ¦bEdgeªºµ¥­Ô®É¶¡
-	public int e_waiting_queue_length = 0; // ¦bEdgeªºµ¥­Ôªø«×
-	public int e_waiting_queue_length_scheduled = 0;//  ±Æµ{«áµ¥­Ôªø«×
+	public double e_arrival_time = 0; // åœ¨Edgeçš„åˆ°é”æ™‚é–“
+	public double e_service_time = 0; // åœ¨Edgeçš„æœå‹™æ™‚é–“
+	public double e_departure_time = 0; // åœ¨Edgeçš„å®Œæˆæ™‚é–“
+	public double e_waiting_time = 0; // åœ¨Edgeçš„ç­‰å€™æ™‚é–“
+	public int e_waiting_queue_length = 0; // åœ¨Edgeçš„ç­‰å€™é•·åº¦
+	public int e_waiting_queue_length_scheduled = 0;//  æ’ç¨‹å¾Œç­‰å€™é•·åº¦
 	
-	public double e2u_arrival_time = 0; // Edge¶Ç°e¨ìUEªº¨ì¹F®É¶¡
-	public double e2u_service_time = 0; // Edge¶Ç°e¨ìUEªºªA°È®É¶¡(¶Ç¿é®É¶¡)
-	public double e2u_departure_time = 0; // Edge¶Ç°e¨ìUEªº§¹¦¨®É¶¡
-	public double e2u_waiting_time = 0; // Edge¶Ç°e¨ìUEªºµ¥­Ô®É¶¡
-	public int e2u_waiting_queue_length = 0; // Edge¶Ç°e¨ìUEªºµ¥­Ôªø«×
-	public int e2u_waiting_queue_length_scheduled = 0;//  ±Æµ{«áµ¥­Ôªø«×
+	public double e2u_arrival_time = 0; // Edgeå‚³é€åˆ°UEçš„åˆ°é”æ™‚é–“
+	public double e2u_service_time = 0; // Edgeå‚³é€åˆ°UEçš„æœå‹™æ™‚é–“(å‚³è¼¸æ™‚é–“)
+	public double e2u_departure_time = 0; // Edgeå‚³é€åˆ°UEçš„å®Œæˆæ™‚é–“
+	public double e2u_waiting_time = 0; // Edgeå‚³é€åˆ°UEçš„ç­‰å€™æ™‚é–“
+	public int e2u_waiting_queue_length = 0; // Edgeå‚³é€åˆ°UEçš„ç­‰å€™é•·åº¦
+	public int e2u_waiting_queue_length_scheduled = 0;//  æ’ç¨‹å¾Œç­‰å€™é•·åº¦
 	
-	public int packet_index = 0; // «Ê¥]½s¸¹ 
-	public int service_type = 0; // ªA°ÈÃş«¬ urllc mmtc embb
-	public double constraint_deadline_time = 0; //¬ù§ô®É¶¡urllc=20ms embb=10s mmtc=75ms
-	public double packet_uplink_size = 0; //«Ê¥]¤j¤p(UE¶Ç¿é)
-	public double packet_downlink_size = 0; //«Ê¥]¤j¤p(EU¶Ç¿é)
-	public double packet_computing_job = 0; //«Ê¥]¤j¤p(Edge¹Bºâ)
+	public int packet_index = 0; // å°åŒ…ç·¨è™Ÿ 
+	public int service_type = 0; // æœå‹™é¡å‹ urllc mmtc embb
+	public double constraint_deadline_time = 0; //ç´„æŸæ™‚é–“urllc=20ms embb=10s mmtc=75ms
+	public double packet_uplink_size = 0; //å°åŒ…å¤§å°(UEå‚³è¼¸)
+	public double packet_downlink_size = 0; //å°åŒ…å¤§å°(EUå‚³è¼¸)
+	public double packet_computing_job = 0; //å°åŒ…å¤§å°(Edgeé‹ç®—)
 	
-	public double deadline_time = 0; // ºI¤î®É¶¡ 
-	public double remaining_time = 0; //  ³Ñ¾l®É¶¡
+	public double deadline_time = 0; // æˆªæ­¢æ™‚é–“ 
+	public double remaining_time = 0; //  å‰©é¤˜æ™‚é–“
 	
 	/**
-	 * «Øºc¤l
-	 * @param packet_index «Ê¥]½s¸¹
-	 * @param service_type ªA°ÈÃş«¬
-	 * @param arrival_time ¨ì¹F
-	 * @param service_time ªA°È®É¶¡
-	 * @param u2e_arrival_time UE¶Ç°e¨ìEdgeªº¨ì¹F®É¶¡
-	 * @param u2e_service_time UE¶Ç°e¨ìEdgeªºªA°È®É¶¡(¶Ç¿é®É¶¡)
-	 * @param e_service_time ¦bEdgeªºªA°È®É¶¡(¹Bºâ®É¶¡)
-	 * @param e2u_service_time Edge¶Ç°e¨ìUEªºªA°È®É¶¡(¶Ç¿é®É¶¡)
+	 * å»ºæ§‹å­
+	 * @param packet_index å°åŒ…ç·¨è™Ÿ
+	 * @param service_type æœå‹™é¡å‹
+	 * @param arrival_time åˆ°é”
+	 * @param service_time æœå‹™æ™‚é–“
+	 * @param u2e_arrival_time UEå‚³é€åˆ°Edgeçš„åˆ°é”æ™‚é–“
+	 * @param u2e_service_time UEå‚³é€åˆ°Edgeçš„æœå‹™æ™‚é–“(å‚³è¼¸æ™‚é–“)
+	 * @param e_service_time åœ¨Edgeçš„æœå‹™æ™‚é–“(é‹ç®—æ™‚é–“)
+	 * @param e2u_service_time Edgeå‚³é€åˆ°UEçš„æœå‹™æ™‚é–“(å‚³è¼¸æ™‚é–“)
 	 */
 	public Packet(int packet_index, int service_type, double packet_uplink_size, double packet_downlink_size, double packet_computing_job, double u2e_arrival_time, double u2e_service_time, double e_service_time, double e2u_service_time) {
 		this.packet_index = packet_index;
@@ -82,49 +82,49 @@ public class Packet {
 	}
 	
 	/**
-	 * ¨ú±o«Ê¥]¸ê°T
-	 * @return «Ê¥]¸ê°T
+	 * å–å¾—å°åŒ…è³‡è¨Š
+	 * @return å°åŒ…è³‡è¨Š
 	 */
 	public String info() {
 		StringBuffer buffer = new StringBuffer("\n");
 		//for(int i = 0; i < queue_number; i++) {
 			//buffer.append("---Queue_").append((i+1)).append("---\n");
 			buffer.append("---UE2Edge---\n");
-			buffer.append("«Ê¥]½s¸¹: ").append(packet_index).append('\n');
-			buffer.append("ªA°ÈÃş«¬: ").append(service_type).append('\n');
+			buffer.append("å°åŒ…ç·¨è™Ÿ: ").append(packet_index).append('\n');
+			buffer.append("æœå‹™é¡å‹: ").append(service_type).append('\n');
 			buffer.append("r, w, o: ").append(packet_uplink_size +", "+packet_computing_job+", "+packet_downlink_size).append('\n');
-			buffer.append("UE¶Ç°e¨ìEdgeªº¨ì¹F®É¶¡: ").append(u2e_arrival_time).append('\n');
-			buffer.append("UE¶Ç°e¨ìEdgeªºªA°È®É¶¡(¶Ç¿é®É¶¡): ").append(u2e_service_time).append('\n');
-			buffer.append("UE¶Ç°e¨ìEdgeªº§¹¦¨®É¶¡: ").append(u2e_departure_time).append('\n');
-			buffer.append("ºI¤î®É¶¡: ").append(deadline_time).append('\n');
-			buffer.append("³Ñ¾l®É¶¡: ").append(remaining_time).append('\n');
-			buffer.append("UE¶Ç°e¨ìEdgeªºµ¥­Ô®É¶¡: ").append(u2e_waiting_time).append('\n');
-			buffer.append("UE¶Ç°e¨ìEdgeªºµ¥­Ôªø«×: ").append(u2e_waiting_queue_length).append('\n');
-			buffer.append("UE¶Ç°e¨ìEdgeªº±Æµ{«áµ¥­Ôªø«×: ").append(u2e_waiting_queue_length_scheduled).append('\n');
+			buffer.append("UEå‚³é€åˆ°Edgeçš„åˆ°é”æ™‚é–“: ").append(u2e_arrival_time).append('\n');
+			buffer.append("UEå‚³é€åˆ°Edgeçš„æœå‹™æ™‚é–“(å‚³è¼¸æ™‚é–“): ").append(u2e_service_time).append('\n');
+			buffer.append("UEå‚³é€åˆ°Edgeçš„å®Œæˆæ™‚é–“: ").append(u2e_departure_time).append('\n');
+			buffer.append("æˆªæ­¢æ™‚é–“: ").append(deadline_time).append('\n');
+			buffer.append("å‰©é¤˜æ™‚é–“: ").append(remaining_time).append('\n');
+			buffer.append("UEå‚³é€åˆ°Edgeçš„ç­‰å€™æ™‚é–“: ").append(u2e_waiting_time).append('\n');
+			buffer.append("UEå‚³é€åˆ°Edgeçš„ç­‰å€™é•·åº¦: ").append(u2e_waiting_queue_length).append('\n');
+			buffer.append("UEå‚³é€åˆ°Edgeçš„æ’ç¨‹å¾Œç­‰å€™é•·åº¦: ").append(u2e_waiting_queue_length_scheduled).append('\n');
 			//buffer.append("---Queue_").append((i+1)).append("---\n");
 			buffer.append("---Edge---\n");
-			buffer.append("«Ê¥]½s¸¹: ").append(packet_index).append('\n');
-			buffer.append("ªA°ÈÃş«¬: ").append(service_type).append('\n');
-			buffer.append("¦bEdgeªº¨ì¹F®É¶¡: ").append(e_arrival_time).append('\n');
-			buffer.append("¦bEdgeªºªA°È®É¶¡(¹Bºâ®É¶¡): ").append(e_service_time).append('\n');
-			buffer.append("¦bEdgeªº§¹¦¨®É¶¡: ").append(e_departure_time).append('\n');
-			buffer.append("ºI¤î®É¶¡: ").append(deadline_time).append('\n');
-			buffer.append("³Ñ¾l®É¶¡: ").append(remaining_time).append('\n');
-			buffer.append("¦bEdgeªºµ¥­Ô®É¶¡: ").append(e_waiting_time).append('\n');
-			buffer.append("¦bEdgeªºµ¥­Ôªø«×: ").append(e_waiting_queue_length).append('\n');
-			buffer.append("¦bEdgeªº±Æµ{«áµ¥­Ôªø«×: ").append(e_waiting_queue_length_scheduled).append('\n');
+			buffer.append("å°åŒ…ç·¨è™Ÿ: ").append(packet_index).append('\n');
+			buffer.append("æœå‹™é¡å‹: ").append(service_type).append('\n');
+			buffer.append("åœ¨Edgeçš„åˆ°é”æ™‚é–“: ").append(e_arrival_time).append('\n');
+			buffer.append("åœ¨Edgeçš„æœå‹™æ™‚é–“(é‹ç®—æ™‚é–“): ").append(e_service_time).append('\n');
+			buffer.append("åœ¨Edgeçš„å®Œæˆæ™‚é–“: ").append(e_departure_time).append('\n');
+			buffer.append("æˆªæ­¢æ™‚é–“: ").append(deadline_time).append('\n');
+			buffer.append("å‰©é¤˜æ™‚é–“: ").append(remaining_time).append('\n');
+			buffer.append("åœ¨Edgeçš„ç­‰å€™æ™‚é–“: ").append(e_waiting_time).append('\n');
+			buffer.append("åœ¨Edgeçš„ç­‰å€™é•·åº¦: ").append(e_waiting_queue_length).append('\n');
+			buffer.append("åœ¨Edgeçš„æ’ç¨‹å¾Œç­‰å€™é•·åº¦: ").append(e_waiting_queue_length_scheduled).append('\n');
 			//buffer.append("---Queue_").append((i+1)).append("---\n");
 			buffer.append("---Edge2UE---\n");
-			buffer.append("«Ê¥]½s¸¹: ").append(packet_index).append('\n');
-			buffer.append("ªA°ÈÃş«¬: ").append(service_type).append('\n');
-			buffer.append("Edge¶Ç°e¨ìUEªº¨ì¹F®É¶¡: ").append(e2u_arrival_time).append('\n');
-			buffer.append("Edge¶Ç°e¨ìUEªºªA°È®É¶¡(¶Ç¿é®É¶¡): ").append(e2u_service_time).append('\n');
-			buffer.append("Edge¶Ç°e¨ìUEªº§¹¦¨®É¶¡: ").append(e2u_departure_time).append('\n');
-			buffer.append("ºI¤î®É¶¡: ").append(deadline_time).append('\n');
-			buffer.append("³Ñ¾l®É¶¡: ").append(remaining_time).append('\n');
-			buffer.append("Edge¶Ç°e¨ìUEªºµ¥­Ô®É¶¡: ").append(e2u_waiting_time).append('\n');
-			buffer.append("Edge¶Ç°e¨ìUEªºµ¥­Ôªø«×: ").append(e2u_waiting_queue_length).append('\n');
-			buffer.append("Edge¶Ç°e¨ìUEªº±Æµ{«áµ¥­Ôªø«×: ").append(e2u_waiting_queue_length_scheduled).append('\n');
+			buffer.append("å°åŒ…ç·¨è™Ÿ: ").append(packet_index).append('\n');
+			buffer.append("æœå‹™é¡å‹: ").append(service_type).append('\n');
+			buffer.append("Edgeå‚³é€åˆ°UEçš„åˆ°é”æ™‚é–“: ").append(e2u_arrival_time).append('\n');
+			buffer.append("Edgeå‚³é€åˆ°UEçš„æœå‹™æ™‚é–“(å‚³è¼¸æ™‚é–“): ").append(e2u_service_time).append('\n');
+			buffer.append("Edgeå‚³é€åˆ°UEçš„å®Œæˆæ™‚é–“: ").append(e2u_departure_time).append('\n');
+			buffer.append("æˆªæ­¢æ™‚é–“: ").append(deadline_time).append('\n');
+			buffer.append("å‰©é¤˜æ™‚é–“: ").append(remaining_time).append('\n');
+			buffer.append("Edgeå‚³é€åˆ°UEçš„ç­‰å€™æ™‚é–“: ").append(e2u_waiting_time).append('\n');
+			buffer.append("Edgeå‚³é€åˆ°UEçš„ç­‰å€™é•·åº¦: ").append(e2u_waiting_queue_length).append('\n');
+			buffer.append("Edgeå‚³é€åˆ°UEçš„æ’ç¨‹å¾Œç­‰å€™é•·åº¦: ").append(e2u_waiting_queue_length_scheduled).append('\n');
 		//}
 		
 		buffer.append("===========\n");
