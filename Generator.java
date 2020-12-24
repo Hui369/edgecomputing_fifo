@@ -3,8 +3,8 @@ package ntust.huiting.random;
 import java.util.Random;
 
 /**
- * ¶Ã¼Æ²£¥Í¾¹
- * @author ¾G¿·ß¬
+ * äº‚æ•¸ç”¢ç”Ÿå™¨
+ * @author hui
  *
  */
 public class Generator {
@@ -12,7 +12,7 @@ public class Generator {
 	private long seed = 0;
 	
 	/**
-	 * «Øºc¤l
+	 * å»ºæ§‹å­
 	 */
 	public Generator() {
 		random = new Random();
@@ -20,26 +20,26 @@ public class Generator {
 	}
 	
 	/**
-	 * ³]©w¶Ã¼ÆºØ¤l
-	 * @param seed ¶Ã¼ÆºØ¤l
+	 * è¨­å®šäº‚æ•¸ç¨®å­
+	 * @param seed äº‚æ•¸ç¨®å­
 	 */
 	public void setSeed(long seed) {
 		random.setSeed(seed);
 	}
 	
 	/**
-	 * ³]©w¬°°ò©ó«ü¼Æ¤À§Gªº¶Ã¼Æ
-	 * @param mu 1/¥­§¡­È
-	 * @return ¶Ã¼Æ
+	 * è¨­å®šç‚ºåŸºæ–¼æŒ‡æ•¸åˆ†ä½ˆçš„äº‚æ•¸
+	 * @param mu 1/å¹³å‡å€¼
+	 * @return äº‚æ•¸
 	 */
 	public double getRandomNumber_Exponential(double mu) {
 		return -(Math.log(random.nextDouble()) / mu);
 	}
 	
 	/**
-	 * ³]©w¬°°ò©óªyªQ¤À§Gªº¶Ã¼Æ
-	 * @param random ¥­§¡­È
-	 * @return ¶Ã¼Æ
+	 * è¨­å®šç‚ºåŸºæ–¼æ³Šæ¾åˆ†ä½ˆçš„äº‚æ•¸
+	 * @param random å¹³å‡å€¼
+	 * @return äº‚æ•¸
 	 */
 	public double getRandomNumber_Poisson(double lambda) {
 		double L = Math.exp(-lambda);
@@ -54,18 +54,18 @@ public class Generator {
 	}
 	
 	/**
-	 * ³]©w¬°°ò©ó§¡¤Ã¤À§Gªº¶Ã¼Æ
-	 * @param mean ¥­§¡­È
-	 * @return ¶Ã¼Æ
+	 * è¨­å®šç‚ºåŸºæ–¼å‡å‹»åˆ†ä½ˆçš„äº‚æ•¸
+	 * @param mean å¹³å‡å€¼
+	 * @return äº‚æ•¸
 	 */
 	public double getRandomNumber_Uniform(double mean) {
 		return random.nextDouble() * mean;
 	}
 	
 	/**
-	 * ³]©w¬°°ò©ó±`ºA¤À§Gªº¶Ã¼Æ
-	 * @param mean ¥­§¡­È
-	 * @return ¶Ã¼Æ
+	 * è¨­å®šç‚ºåŸºæ–¼å¸¸æ…‹åˆ†ä½ˆçš„äº‚æ•¸
+	 * @param mean å¹³å‡å€¼
+	 * @return äº‚æ•¸
 	 */
 	public double getRandomNumber_Normal(double mean) {
 		return random.nextGaussian() * mean;
