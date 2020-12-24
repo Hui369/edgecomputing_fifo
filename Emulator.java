@@ -4,60 +4,60 @@ import ntust.huiting.edgecomputing.Packet;
 import ntust.huiting.random.Generator;
 
 /**
- * Ãä½t¹Bºâ¼ÒÀÀ¾¹
- * @author ¾G¿·ß¬
+ * é‚Šç·£é‹ç®—æ¨¡æ“¬å™¨
+ * @author 
  *
  */
 public class Emulator {		
-	//final static double lambda = 2; // UE¶Ç°e¨ìEdgeªº«Ê¥]¨ì¹F²v	
-	final static double constraint_deadline_time[] = {0.010, 1, 0.05}; //¬ù§ô
-	final static int service_number = 3; /// ªA°ÈÃş«¬¼Æ¶q //urllc embb mmtc
+	//final static double lambda = 2; // UEå‚³é€åˆ°Edgeçš„å°åŒ…åˆ°é”ç‡	
+	final static double constraint_deadline_time[] = {0.010, 1, 0.05}; //ç´„æŸ
+	final static int service_number = 3; /// æœå‹™é¡å‹æ•¸é‡ //urllc embb mmtc
 	final static double lambda[] = {105, 30, 15}; //urllc, embb, mmtc (packets/s)
 	//data rate: uRLLC >25kbps, eMBB 2Mbps, mMTC 800kbps
 	final static double r_job_size[] = {0.5, 1.5, 0.5}; //urllc,embb,mmtc packet UE2Edge input size (bits)
 	final static double w_job_size[] = {11, 1, 0.5}; //urllc,embb,mmtc packet Edge work load (cycles)
 	final static double o_job_size[] = {0.5, 1.5, 0.5}; //urllc,embb,mmtc packet Edge2UE output size ((bits)
-	//uplink rate 40 Mbps , downlink rate  63 Mbps  ¥H¤ÎEdge ¬OIntel Xeon CPUs ,	Intel Xeon CPUs ¬ù 3.00 GHz¡C
-	final static double mu_UE = 4000; // UE¶Ç°e¨ìEdgeªºªA°È²v(¶Ç¿é²v) 40Mbps 
-	final static double mu_E = 0.3; // ¦bEdgeªºªA°È²v(¹Bºâ²v) 178MIps 3.00 GHz (cycles)
-	final static double mu_EU = 6300; // Edge¶Ç°e¨ìUEªºªA°È²v(¶Ç¿é²v) 63Mbps
-	final static int number_packet = 10; // ¼ÒÀÀ«Ê¥]¼Æ
-	static Packet packet[] = new Packet[number_packet]; // «Ê¥]
+	//uplink rate 40 Mbps , downlink rate  63 Mbps  ä»¥åŠEdge æ˜¯Intel Xeon CPUs ,	Intel Xeon CPUs ç´„ 3.00 GHzã€‚
+	final static double mu_UE = 4000; // UEå‚³é€åˆ°Edgeçš„æœå‹™ç‡(å‚³è¼¸ç‡) 40Mbps 
+	final static double mu_E = 0.3; // åœ¨Edgeçš„æœå‹™ç‡(é‹ç®—ç‡) 178MIps 3.00 GHz (cycles)
+	final static double mu_EU = 6300; // Edgeå‚³é€åˆ°UEçš„æœå‹™ç‡(å‚³è¼¸ç‡) 63Mbps
+	final static int number_packet = 10; // æ¨¡æ“¬å°åŒ…æ•¸
+	static Packet packet[] = new Packet[number_packet]; // å°åŒ…
 	
 	
 	/**
-	 * ¥Dµ{¦¡
+	 * ä¸»ç¨‹å¼
 	 * @param args
 	 */
 	public static void main(String args[]) {
-		// ªì©l¤Æ«Ê¥]
+		// åˆå§‹åŒ–å°åŒ…
 		initial_packet();
 		
-		// UE¶Ç°e¨ìEdgeªºM/M/1 queue_fifo
+		// UEå‚³é€åˆ°Edgeçš„M/M/1 queue_fifo
 		u2e_m_m_1();
 				
-		// ¦bEdgeªºM/M/1 queue_fifo
+		// åœ¨Edgeçš„M/M/1 queue_fifo
 		e_m_m_1();
 				
-		// Edge¶Ç°e¨ìUEªºM/M/1 queue_fifo
+		// Edgeå‚³é€åˆ°UEçš„M/M/1 queue_fifo
 		e2u_m_m_1();
 		
-		// Åã¥Ü²Î­pµ²ªG
+		// é¡¯ç¤ºçµ±è¨ˆçµæœ
 		summary();
 	}
 	
 	/**
-	 * ªì©l¤Æ«Ê¥]
-	 * ³]©w¨C­Ó«Ê¥]ªº¨ì¹F®É¶¡©MªA°È®É¶¡
+	 * åˆå§‹åŒ–å°åŒ…
+	 * è¨­å®šæ¯å€‹å°åŒ…çš„åˆ°é”æ™‚é–“å’Œæœå‹™æ™‚é–“
 	 */
 	private static void initial_packet() {
-		// ¶Ã¼Æ²£¥Í¾¹
+		// äº‚æ•¸ç”¢ç”Ÿå™¨
 		Generator g = new Generator();
 		
-		// ·í¤U®É¶¡ÂI
+		// ç•¶ä¸‹æ™‚é–“é»
 		double current_time[] = {0, 0, 0};
 		
-		//²£¥Ínumber_packet­Ó«Ê¥]
+		//ç”¢ç”Ÿnumber_packetå€‹å°åŒ…
 		for(int i = 0; i < number_packet; i++) {
 			int service_type_gen = 0;
 			double current_time_gen = current_time[service_type_gen];
@@ -84,16 +84,16 @@ public class Emulator {
 	}
 	
 	/**
-	 * UE¶Ç°e¨ìEdgeªºM/M/1 queue_fifo
+	 * UEå‚³é€åˆ°Edgeçš„M/M/1 queue_fifo
 	 */
 	private static void u2e_m_m_1() {
 		double previous_packet_departure_time = 0;
 		
-		// ³B²z¨C¤@­Ó«Ê¥]
+		// è™•ç†æ¯ä¸€å€‹å°åŒ…
 		for(int i = 0; i < number_packet; i++) {
 			packet[i].u2e_waiting_queue_length = 0;
 			
-			// »İµ¥­Ô
+			// éœ€ç­‰å€™
 			if(packet[i].u2e_arrival_time < previous_packet_departure_time) {
 				packet[i].u2e_departure_time = previous_packet_departure_time + packet[i].u2e_service_time;
 				packet[i].u2e_waiting_time = previous_packet_departure_time - packet[i].u2e_arrival_time;
@@ -106,28 +106,28 @@ public class Emulator {
 					else break;
 				}
 			}
-			// ¤£»İµ¥­Ô
+			// ä¸éœ€ç­‰å€™
 			else {
 				packet[i].u2e_departure_time = packet[i].u2e_arrival_time + packet[i].u2e_service_time;
 				packet[i].u2e_waiting_time = 0;				
 			}
-			// §ó·s«e¤@­Ó«Ê¥]Â÷¶}®É¶¡
+			// æ›´æ–°å‰ä¸€å€‹å°åŒ…é›¢é–‹æ™‚é–“
 			previous_packet_departure_time = packet[i].u2e_departure_time;
 			packet[i].e_arrival_time = packet[i].u2e_departure_time;
 		}
 	}
 	
 	/**
-	 *  ¦bEdgeªºM/M/1 queue_fifo
+	 *  åœ¨Edgeçš„M/M/1 queue_fifo
 	 */
 	private static void e_m_m_1() {
 		double previous_packet_departure_time = 0;
 		
-		// ³B²z¨C¤@­Ó«Ê¥]
+		// è™•ç†æ¯ä¸€å€‹å°åŒ…
 		for(int i = 0; i < number_packet; i++) {
 			packet[i].e_waiting_queue_length = 0;
 			
-			// »İµ¥­Ô
+			// éœ€ç­‰å€™
 			if(packet[i].e_arrival_time < previous_packet_departure_time) {
 				packet[i].e_departure_time = previous_packet_departure_time + packet[i].e_service_time;
 				packet[i].e_waiting_time = previous_packet_departure_time - packet[i].e_arrival_time;
@@ -140,28 +140,28 @@ public class Emulator {
 					else break;
 				}
 			}
-			// ¤£»İµ¥­Ô
+			// ä¸éœ€ç­‰å€™
 			else {
 				packet[i].e_departure_time = packet[i].e_arrival_time + packet[i].e_service_time;
 				packet[i].e_waiting_time = 0;				
 			}
-			// §ó·s«e¤@­Ó«Ê¥]Â÷¶}®É¶¡
+			// æ›´æ–°å‰ä¸€å€‹å°åŒ…é›¢é–‹æ™‚é–“
 			previous_packet_departure_time = packet[i].e_departure_time;
 			packet[i].e2u_arrival_time = packet[i].e_departure_time;
 		}
 	}
 	
 	/**
-	 * Edge¶Ç°e¨ìUEªºM/M/1 queue_fifo
+	 * Edgeå‚³é€åˆ°UEçš„M/M/1 queue_fifo
 	 */
 	private static void e2u_m_m_1() {
 		double previous_packet_departure_time = 0;
 		
-		// ³B²z¨C¤@­Ó«Ê¥]
+		// è™•ç†æ¯ä¸€å€‹å°åŒ…
 		for(int i = 0; i < number_packet; i++) {
 			packet[i].e2u_waiting_queue_length = 0;
 			
-			// »İµ¥­Ô
+			// éœ€ç­‰å€™
 			if(packet[i].e2u_arrival_time < previous_packet_departure_time) {
 				packet[i].e2u_departure_time = previous_packet_departure_time + packet[i].e2u_service_time;
 				packet[i].e2u_waiting_time = previous_packet_departure_time - packet[i].e2u_arrival_time;
@@ -174,19 +174,19 @@ public class Emulator {
 					else break;
 				}
 			}
-			// ¤£»İµ¥­Ô
+			// ä¸éœ€ç­‰å€™
 			else {
 				packet[i].e2u_departure_time = packet[i].e2u_arrival_time + packet[i].e2u_service_time;
 				packet[i].e2u_waiting_time = 0;				
 			}
-			// §ó·s«e¤@­Ó«Ê¥]Â÷¶}®É¶¡
+			// æ›´æ–°å‰ä¸€å€‹å°åŒ…é›¢é–‹æ™‚é–“
 			previous_packet_departure_time = packet[i].e2u_departure_time;
 		}
 	}
 	
 		
 	/**
-	 * ²Î­pµ²ªG
+	 * çµ±è¨ˆçµæœ
 	 */
 	private static void summary() {
 		double total_u2e_service_time = 0;
@@ -196,16 +196,16 @@ public class Emulator {
 		double total_e2u_service_time = 0;
 		double total_e2u_waiting_time = 0;
 		double total_processing_time = 0;
-		double total_delay_packet = 0; //­pºâ¤w©µ¿ğ«Ê¥]
-		double total_delay_packet_type0 = 0; //service type urllc ¶W¹Ldeadline
-		double total_delay_packet_type1 = 0; //service type embb ¶W¹Ldeadline
-		double total_delay_packet_type2 = 0; //service type mmtc ¶W¹Ldeadline
+		double total_delay_packet = 0; //è¨ˆç®—å·²å»¶é²å°åŒ…
+		double total_delay_packet_type0 = 0; //service type urllc è¶…édeadline
+		double total_delay_packet_type1 = 0; //service type embb è¶…édeadline
+		double total_delay_packet_type2 = 0; //service type mmtc è¶…édeadline
 		double total_packet_type0 = 0; //service type urllc
 		double total_packet_type1 = 0; //service type embb 
 		double total_packet_type2 = 0; //service type mmtc
 		double simulation_time = packet[number_packet - 1].e2u_departure_time;
 		
-		// Åã¥Ü©M²Î­p¨C¤@­Ó«Ê¥]ªº®É¶¡
+		// é¡¯ç¤ºå’Œçµ±è¨ˆæ¯ä¸€å€‹å°åŒ…çš„æ™‚é–“
 		for(int i = 0; i < number_packet; i++) {
 			if(packet[i].service_type == 0) total_packet_type0++; //urllc
 			if(packet[i].service_type == 1) total_packet_type1++; //embb
@@ -226,30 +226,30 @@ public class Emulator {
 			total_e2u_waiting_time += packet[i].e2u_waiting_time;
 			total_processing_time += packet[i].e2u_departure_time - packet[i].u2e_arrival_time;
 			
-			System.out.println("«Ê¥](" + (i+1) + "): " + packet[i].info());
+			System.out.println("å°åŒ…(" + (i+1) + "): " + packet[i].info());
 		}
 		
-		// Åã¥Ü²Î­pµ²ªG
-		System.out.println("UE¶Ç°e¨ìEdgeªºªA°È®É¶¡: " + (total_u2e_service_time));
-		System.out.println("¥­§¡UE¶Ç°e¨ìEdgeªºªA°È®É¶¡: " + (total_u2e_service_time/number_packet));
-		System.out.println("¥­§¡UE¶Ç°e¨ìEdgeªºµ¥­Ô®É¶¡: " + (total_u2e_waiting_time/number_packet));
-		System.out.println("¥­§¡UE¶Ç°e¨ìEdgeªºµ¥­Ôªø«×: " + (total_u2e_waiting_time/simulation_time));
-		System.out.println("¦bEdgeªºªA°È®É¶¡: " + (total_e_service_time));
-		System.out.println("¥­§¡¦bEdgeªºªA°È®É¶¡: " + (total_e_service_time/number_packet));
-		System.out.println("¥­§¡¦bEdgeªºµ¥­Ô®É¶¡: " + (total_e_waiting_time/number_packet));
-		System.out.println("¥­§¡¦bEdgeªºµ¥­Ôªø«×: " + (total_e_waiting_time/simulation_time));
-		System.out.println("Edge¶Ç°e¨ìUEªºªA°È®É¶¡: " + (total_e2u_service_time));
-		System.out.println("¥­§¡Edge¶Ç°e¨ìUEªºªA°È®É¶¡: " + (total_e2u_service_time/number_packet));
-		System.out.println("¥­§¡Edge¶Ç°e¨ìUEªºµ¥­Ô®É¶¡: " + (total_e2u_waiting_time/number_packet));
-		System.out.println("¥­§¡Edge¶Ç°e¨ìUEªºµ¥­Ôªø«×: " + (total_e2u_waiting_time/simulation_time));
-		System.out.println("¥­§¡¨C­Ó«Ê¥]ªºE2E®É¶¡: " + (total_processing_time/number_packet)); //average delay
-		System.out.println("¥­§¡¨C­Ó«Ê¥]ªº¶W¹Ldeadlineªº¤ñ¨Ò: " + (total_delay_packet/number_packet)); //¶W¹Ldeadline time
-		System.out.println("urllc¶W¹Ldeadlineªº«Ê¥]¼Æ: " + (total_delay_packet_type0));System.out.println("urllcÁ`«Ê¥]¼Æ: " + (total_packet_type0));
-		System.out.println("urllc«Ê¥]¶W¹Ldeadlineªº¤ñ¨Ò: " + (total_delay_packet_type0/total_packet_type0));
-		System.out.println("embb¶W¹Ldeadlineªº«Ê¥]¼Æ: " + (total_delay_packet_type1));System.out.println("embbÁ`«Ê¥]¼Æ: " + (total_packet_type1));
-		System.out.println("embb«Ê¥]¶W¹Ldeadlineªº¤ñ¨Ò: " + (total_delay_packet_type1/total_packet_type1));
-		System.out.println("mmtc¶W¹Ldeadlineªº«Ê¥]¼Æ: " + (total_delay_packet_type2));System.out.println("mmtcÁ`«Ê¥]¼Æ: " + (total_packet_type2));
-		System.out.println("mmtc«Ê¥]¶W¹Ldeadlineªº¤ñ¨Ò: " + (total_delay_packet_type2/total_packet_type2));
+		// é¡¯ç¤ºçµ±è¨ˆçµæœ
+		System.out.println("UEå‚³é€åˆ°Edgeçš„æœå‹™æ™‚é–“: " + (total_u2e_service_time));
+		System.out.println("å¹³å‡UEå‚³é€åˆ°Edgeçš„æœå‹™æ™‚é–“: " + (total_u2e_service_time/number_packet));
+		System.out.println("å¹³å‡UEå‚³é€åˆ°Edgeçš„ç­‰å€™æ™‚é–“: " + (total_u2e_waiting_time/number_packet));
+		System.out.println("å¹³å‡UEå‚³é€åˆ°Edgeçš„ç­‰å€™é•·åº¦: " + (total_u2e_waiting_time/simulation_time));
+		System.out.println("åœ¨Edgeçš„æœå‹™æ™‚é–“: " + (total_e_service_time));
+		System.out.println("å¹³å‡åœ¨Edgeçš„æœå‹™æ™‚é–“: " + (total_e_service_time/number_packet));
+		System.out.println("å¹³å‡åœ¨Edgeçš„ç­‰å€™æ™‚é–“: " + (total_e_waiting_time/number_packet));
+		System.out.println("å¹³å‡åœ¨Edgeçš„ç­‰å€™é•·åº¦: " + (total_e_waiting_time/simulation_time));
+		System.out.println("Edgeå‚³é€åˆ°UEçš„æœå‹™æ™‚é–“: " + (total_e2u_service_time));
+		System.out.println("å¹³å‡Edgeå‚³é€åˆ°UEçš„æœå‹™æ™‚é–“: " + (total_e2u_service_time/number_packet));
+		System.out.println("å¹³å‡Edgeå‚³é€åˆ°UEçš„ç­‰å€™æ™‚é–“: " + (total_e2u_waiting_time/number_packet));
+		System.out.println("å¹³å‡Edgeå‚³é€åˆ°UEçš„ç­‰å€™é•·åº¦: " + (total_e2u_waiting_time/simulation_time));
+		System.out.println("å¹³å‡æ¯å€‹å°åŒ…çš„E2Eæ™‚é–“: " + (total_processing_time/number_packet)); //average delay
+		System.out.println("å¹³å‡æ¯å€‹å°åŒ…çš„è¶…édeadlineçš„æ¯”ä¾‹: " + (total_delay_packet/number_packet)); //è¶…édeadline time
+		System.out.println("urllcè¶…édeadlineçš„å°åŒ…æ•¸: " + (total_delay_packet_type0));System.out.println("urllcç¸½å°åŒ…æ•¸: " + (total_packet_type0));
+		System.out.println("urllcå°åŒ…è¶…édeadlineçš„æ¯”ä¾‹: " + (total_delay_packet_type0/total_packet_type0));
+		System.out.println("embbè¶…édeadlineçš„å°åŒ…æ•¸: " + (total_delay_packet_type1));System.out.println("embbç¸½å°åŒ…æ•¸: " + (total_packet_type1));
+		System.out.println("embbå°åŒ…è¶…édeadlineçš„æ¯”ä¾‹: " + (total_delay_packet_type1/total_packet_type1));
+		System.out.println("mmtcè¶…édeadlineçš„å°åŒ…æ•¸: " + (total_delay_packet_type2));System.out.println("mmtcç¸½å°åŒ…æ•¸: " + (total_packet_type2));
+		System.out.println("mmtcå°åŒ…è¶…édeadlineçš„æ¯”ä¾‹: " + (total_delay_packet_type2/total_packet_type2));
 	}
 	
 }
