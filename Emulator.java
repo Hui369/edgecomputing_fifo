@@ -5,7 +5,7 @@ import ntust.huiting.random.Generator;
 
 /**
  * 邊緣運算模擬器
- * @author 
+ * @author hui
  *
  */
 public class Emulator {		
