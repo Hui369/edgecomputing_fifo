@@ -15,7 +15,7 @@ public class Emulator {
 	final static double lambda[] = {105, 30, 15}; //urllc, embb, mmtc (packets/s)
 	//data rate: uRLLC >25kbps, eMBB 2Mbps, mMTC 800kbps
 	final static double r_job_size[] = {0.5, 1.5, 0.5}; //urllc,embb,mmtc packet UE2Edge input size (bits)
-	final static double w_job_size[] = {11, 1, 0.5}; //urllc,embb,mmtc packet Edge work load (cycles)
+	final static double w_job_size[] = {0.11, 1, 0.5}; //urllc,embb,mmtc packet Edge work load (cycles)
 	final static double o_job_size[] = {0.5, 1.5, 0.5}; //urllc,embb,mmtc packet Edge2UE output size ((bits)
 	//uplink rate 40 Mbps , downlink rate  63 Mbps  以及Edge 是Intel Xeon CPUs ,	Intel Xeon CPUs 約 3.00 GHz。
 	final static double mu_UE = 4000; // UE傳送到Edge的服務率(傳輸率) 40Mbps 
