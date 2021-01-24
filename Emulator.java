@@ -243,7 +243,7 @@ public class Emulator {
 		System.out.println("平均Edge傳送到UE的等候時間: " + (total_e2u_waiting_time/number_packet));
 		System.out.println("平均Edge傳送到UE的等候長度: " + (total_e2u_waiting_time/simulation_time));
 		System.out.println("平均每個封包的E2E時間: " + (total_processing_time/number_packet)); //average delay
-		System.out.println("平均每個封包的超過deadline的比例: " + (total_delay_packet/number_packet)); //超過deadline time
+		System.out.println("超過deadline的比例: " + (total_delay_packet/number_packet)); //超過deadline time
 		System.out.println("urllc超過deadline的封包數: " + (total_delay_packet_type0));System.out.println("urllc總封包數: " + (total_packet_type0));
 		System.out.println("urllc封包超過deadline的比例: " + (total_delay_packet_type0/total_packet_type0));
 		System.out.println("embb超過deadline的封包數: " + (total_delay_packet_type1));System.out.println("embb總封包數: " + (total_packet_type1));
