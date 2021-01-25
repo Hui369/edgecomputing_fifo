@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * 亂數產生器
- * @author hui
+ * @author 鄭蕙葶
  *
  */
 public class Generator {
@@ -68,6 +68,6 @@ public class Generator {
 	 * @return 亂數
 	 */
 	public double getRandomNumber_Normal(double mean) {
-		return random.nextGaussian() * mean;
+		return Math.abs(random.nextGaussian() * mean);
 	}
 }
