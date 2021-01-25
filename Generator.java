@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * 亂數產生器
- * @author 鄭蕙葶
+ * @author hui
  *
  */
 public class Generator {
