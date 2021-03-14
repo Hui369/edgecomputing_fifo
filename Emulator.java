@@ -46,7 +46,7 @@ public class Emulator {
 		
 		//產生number_packet個封包
 		for(int i = 0; i < number_packet; i++) {
-			double inter_arrival_time = g.getRandomNumber_Exponential(lambda);
+			double inter_arrival_time = g.getRandomNumber_Exponential(1/lambda);
 			double arrival_time = current_time += inter_arrival_time;
 			double service_time[] = new double[queue_number];
 			service_time[0] = g.getRandomNumber_Exponential(mu_UE);
