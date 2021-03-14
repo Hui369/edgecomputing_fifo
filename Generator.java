@@ -33,7 +33,7 @@ public class Generator {
 	 * @return 亂數
 	 */
 	public double getRandomNumber_Exponential(double mu) {
-		return -(Math.log(random.nextDouble()) / mu);
+		return -(Math.log(random.nextDouble()) * mu);
 	}
 	
 	/**
